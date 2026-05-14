@@ -3,42 +3,40 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>資料一覧 | 菫青の大学入試数学資料保管庫</title>
-    <meta name="description" content="菫青の大学入試数学資料保管庫に公開されている数学PDF資料の一覧です。">
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/materials.js" defer></script>
+    <title>資料一覧 | KINSEI E-ARCHIVE</title>
+    <meta name="description" content="菫青の大学入試数学資料保管庫に公開されている数学PDF資料の一覧です．">
+    <link rel="stylesheet" href="./css/style.css?v=20260514-14">
+    <script src="./js/materials.js?v=20260514-14" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">本文へ移動</a>
     <header class="site-header">
-      <a class="brand" href="./index.html" aria-label="菫青の大学入試数学資料保管庫 ホーム">
-        <span class="brand-mark" aria-hidden="true">kinsei</span>
-        <span class="brand-text">菫青の大学入試数学資料保管庫</span>
+      <a class="site-name" href="./index.html?v=20260514-14" aria-label="KINSEI E-ARCHIVE ホーム">
+        <span>KINSEI E-ARCHIVE</span>
+        <small>菫青の大学入試数学資料保管庫</small>
       </a>
       <nav class="site-nav" aria-label="主要ナビゲーション">
-        <a href="./index.html">トップ</a>
-        <a class="is-active" href="./materials.html">資料一覧</a>
-        <a href="./about.html">このサイトについて</a>
-        <a href="./contact.html">連絡先</a>
+        <a href="./index.html?v=20260514-14">トップ</a>
+        <a class="is-active" href="./materials.html?v=20260514-14">資料一覧</a>
+        <a href="./about.html?v=20260514-14">このサイトについて</a>
+        <a href="./contact.html?v=20260514-14">連絡先</a>
       </nav>
     </header>
 
-    <main id="main">
-      <section class="page-hero">
-        <p class="eyebrow">Materials</p>
-        <h1>資料一覧</h1>
-        <p>高校数学の大分類から入り、必要なら単元や資料種別で絞り込めます。細かく分類しても、大きな入口から迷わず探せる一覧です。</p>
+    <main id="main" class="page-main">
+      <section class="page-title">
+        <h1>PDF資料一覧</h1>
+        <p>タイトル，説明，タグ，科目分類，小分類，基礎，問題演習を対象に検索できます．</p>
       </section>
 
       <section class="materials-layout" aria-label="資料検索と一覧">
         <aside class="filter-panel" aria-label="資料の絞り込み">
-          <p class="filter-kicker">Filter</p>
           <div class="field-group">
             <label for="keywordSearch">キーワード検索</label>
-            <input id="keywordSearch" type="search" placeholder="例: 数学Ⅰ ベクトル 基礎" autocomplete="off">
+            <input id="keywordSearch" type="search" placeholder="数学Ⅰ ベクトル 基礎" autocomplete="off">
           </div>
           <div class="field-group">
-            <p class="control-label" id="courseFilterLabel">大分類</p>
+            <p class="control-label" id="courseFilterLabel">高校数学内の科目分類</p>
             <div class="filter-buttons" id="courseFilter" role="group" aria-labelledby="courseFilterLabel"></div>
           </div>
           <div class="field-group">
@@ -48,28 +46,21 @@
             </select>
           </div>
           <div class="field-group">
-            <p class="control-label" id="typeFilterLabel">資料種別</p>
+            <p class="control-label" id="typeFilterLabel">種別</p>
             <div class="filter-buttons compact" id="typeFilter" role="group" aria-labelledby="typeFilterLabel"></div>
           </div>
-          <button class="button ghost" id="resetFilters" type="button">条件をクリア</button>
+          <button class="text-button reset-button" id="resetFilters" type="button">条件をクリア</button>
         </aside>
 
         <section class="list-panel" aria-label="PDF資料一覧">
           <div class="list-toolbar">
-            <div>
-              <p class="eyebrow">Library</p>
-              <h2>公開PDF</h2>
-            </div>
+            <p class="section-label">公開PDF</p>
             <p class="material-count" id="materialCount">読み込み中</p>
           </div>
           <div class="materials-grid" id="materialsList" aria-live="polite"></div>
-          <p class="empty-message" id="emptyMessage" hidden>該当する資料がありません。キーワードやカテゴリを変えてお試しください。</p>
+          <p class="empty-message" id="emptyMessage" hidden>該当する資料がありません．キーワードや分類を変えてお試しください．</p>
         </section>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <p><span class="mono">data/materials.json</span> の内容を読み込んで表示しています。</p>
-    </footer>
   </body>
 </html>

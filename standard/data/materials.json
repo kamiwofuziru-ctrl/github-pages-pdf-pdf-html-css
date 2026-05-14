@@ -1,11 +1,21 @@
 [
   {
+    "title": "自己紹介とドライブの解説",
+    "courses": ["その他"],
+    "units": ["その他"],
+    "type": ["基礎"],
+    "description": "共有Driveの構成や資料の見方を説明する案内資料です。",
+    "file": "../files/self-introduction-and-drive-guide.pdf",
+    "date": "2026-05-14",
+    "tags": ["案内", "Drive", "利用方法"]
+  },
+  {
     "title": "入試数学の再構築",
     "courses": ["その他"],
     "units": ["その他"],
     "type": ["基礎", "問題演習"],
-    "description": "入試数学の考え方や解法の整理を再構築するための資料です．",
-    "file": "./files/entrance-math-reconstruction.pdf",
+    "description": "入試数学の考え方や解法の整理を再構築するための資料です。",
+    "file": "../files/entrance-math-reconstruction.pdf",
     "date": "2026-05-14",
     "tags": ["入試数学", "学習法", "再構築"]
   },
@@ -14,8 +24,8 @@
     "courses": ["数学Ⅰ"],
     "units": ["データの分析"],
     "type": ["基礎"],
-    "description": "共通テスト対策としてデータの分析分野をまとめた資料です．",
-    "file": "./files/common-test-data-analysis.pdf",
+    "description": "共通テスト対策としてデータの分析分野をまとめた資料です。",
+    "file": "../files/common-test-data-analysis.pdf",
     "date": "2026-05-14",
     "tags": ["共通テスト", "データの分析", "統計"]
   },
@@ -24,8 +34,8 @@
     "courses": ["数学Ⅰ", "数学A"],
     "units": ["図形と計量", "図形の性質"],
     "type": ["基礎"],
-    "description": "共通テスト対策として幾何・図形分野を整理した資料です．",
-    "file": "./files/common-test-geometry.pdf",
+    "description": "共通テスト対策として幾何・図形分野を整理した資料です。",
+    "file": "../files/common-test-geometry.pdf",
     "date": "2026-05-14",
     "tags": ["共通テスト", "幾何", "図形"]
   },
@@ -34,8 +44,8 @@
     "courses": ["数学Ⅱ"],
     "units": ["微分法・積分法"],
     "type": ["基礎"],
-    "description": "共通テストで扱う面積計算を重点的にまとめた資料です．",
-    "file": "./files/common-test-area-calculation.pdf",
+    "description": "共通テストで扱う面積計算を重点的にまとめた資料です。",
+    "file": "../files/common-test-area-calculation.pdf",
     "date": "2026-05-14",
     "tags": ["共通テスト", "面積", "積分"]
   },
@@ -44,8 +54,8 @@
     "courses": ["数学Ⅰ", "数学A"],
     "units": ["図形と計量", "図形の性質"],
     "type": ["基礎", "問題演習"],
-    "description": "最新の共通テスト幾何分野を確認するための資料です．",
-    "file": "./files/latest-common-test-geometry.pdf",
+    "description": "最新の共通テスト幾何分野を確認するための資料です。",
+    "file": "../files/latest-common-test-geometry.pdf",
     "date": "2026-05-14",
     "tags": ["共通テスト", "幾何", "最新"]
   },
@@ -54,8 +64,8 @@
     "courses": ["数学C"],
     "units": ["ベクトル"],
     "type": ["基礎"],
-    "description": "ベクトル分野の要点と解法を詳しく整理した資料です．",
-    "file": "./files/vector-detailed-explanation.pdf",
+    "description": "ベクトル分野の要点と解法を詳しく整理した資料です。",
+    "file": "../files/vector-detailed-explanation.pdf",
     "date": "2026-05-14",
     "tags": ["ベクトル", "詳解", "図形"]
   },
@@ -64,8 +74,8 @@
     "courses": ["数学Ⅱ", "数学Ⅲ"],
     "units": ["微分法・積分法", "微分法"],
     "type": ["基礎"],
-    "description": "凸の定義とその使い方を詳しく確認するための資料です．",
-    "file": "./files/convexity-definition-detailed-explanation.pdf",
+    "description": "凸の定義とその使い方を詳しく確認するための資料です。",
+    "file": "../files/convexity-definition-detailed-explanation.pdf",
     "date": "2026-05-14",
     "tags": ["凸関数", "定義", "詳解"]
   },
@@ -74,8 +84,8 @@
     "courses": ["数学Ⅲ"],
     "units": ["極限"],
     "type": ["基礎"],
-    "description": "極限計算の考え方と処理を詳しく整理した資料です．",
-    "file": "./files/limit-calculation-detailed-explanation.pdf",
+    "description": "極限計算の考え方と処理を詳しく整理した資料です。",
+    "file": "../files/limit-calculation-detailed-explanation.pdf",
     "date": "2026-05-14",
     "tags": ["極限", "計算", "詳解"]
   },
@@ -84,8 +94,8 @@
     "courses": ["数学Ⅱ", "数学C"],
     "units": ["複素数と方程式", "複素数平面"],
     "type": ["基礎"],
-    "description": "複素数分野の要点と解法を詳しく整理した資料です．",
-    "file": "./files/complex-numbers-detailed-explanation.pdf",
+    "description": "複素数分野の要点と解法を詳しく整理した資料です。",
+    "file": "../files/complex-numbers-detailed-explanation.pdf",
     "date": "2026-05-14",
     "tags": ["複素数", "詳解", "入試数学"]
   }

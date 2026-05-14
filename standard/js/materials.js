@@ -81,15 +81,6 @@ function setupControls() {
     renderTypeButtons();
     renderMaterials();
   });
-
-  document.getElementById("materialsList").addEventListener("click", (event) => {
-    const button = event.target.closest("[data-inline-filter]");
-    if (!button) {
-      return;
-    }
-
-    applyInlineFilter(button.dataset.inlineFilter, button.dataset.value);
-  });
 }
 
 async function loadMaterials() {
@@ -117,7 +108,7 @@ async function loadMaterials() {
     if (list && emptyMessage) {
       list.innerHTML = "";
       emptyMessage.hidden = false;
-      emptyMessage.textContent = "資料データを読み込めませんでした．GitHub Pagesまたはローカルサーバー経由で開いてください．";
+      emptyMessage.textContent = "資料データを読み込めませんでした。GitHub Pagesまたはローカルサーバー経由で開いてください。";
       updateCount(0, 0);
     }
 
@@ -263,24 +254,24 @@ function getFilteredMaterials() {
 
 function renderMaterialCard(material) {
   const filePath = getPdfPath(material.file);
-  const courses = renderPills(material.courses, "course-pill", "course");
-  const units = renderPills(material.units, "unit-pill", "unit");
-  const type = renderPills(material.type, "type-pill", "type");
+  const courses = renderPills(material.courses, "course-pill");
+  const units = renderPills(material.units, "unit-pill");
+  const type = renderPills(material.type, "type-pill");
   const tags = material.tags.length
-    ? renderPills(material.tags, "tag-pill", "tag")
+    ? material.tags.map((tag) => `<span class="tag-pill">${escapeHtml(tag)}</span>`).join("")
     : '<span class="tag-pill">タグなし</span>';
 
   return `
     <article class="material-card">
       <div class="material-topline">
-        <div class="pill-row course-row" aria-label="大分類">${courses}</div>
+        <div class="pill-row" aria-label="大分類">${courses}</div>
         <time datetime="${escapeHtml(material.date)}">${escapeHtml(formatDate(material.date))}</time>
       </div>
       <h3>${escapeHtml(material.title)}</h3>
       <p>${escapeHtml(material.description)}</p>
       <div class="card-actions">
-        <a class="material-link" href="${escapeHtml(filePath)}" target="_blank" rel="noopener">PDFを開く</a>
-        <a class="material-link" href="${escapeHtml(filePath)}" download>ダウンロード</a>
+        <a class="button primary material-button" href="${escapeHtml(filePath)}" target="_blank" rel="noopener">PDFを開く</a>
+        <a class="button secondary material-button" href="${escapeHtml(filePath)}" download>ダウンロード</a>
       </div>
       <div class="classification-grid">
         <div>
@@ -297,52 +288,14 @@ function renderMaterialCard(material) {
   `;
 }
 
-function renderPills(values, className, filterKind) {
-  return values.map((value) => `
-    <button class="${className} classification-button" type="button" data-inline-filter="${escapeHtml(filterKind)}" data-value="${escapeHtml(value)}">
-      ${escapeHtml(value)}
-    </button>
-  `).join("");
-}
-
-function applyInlineFilter(filterKind, value) {
-  const searchInput = document.getElementById("keywordSearch");
-
-  state.query = "";
-  state.course = "all";
-  state.unit = "all";
-  state.type = "all";
-
-  if (filterKind === "course") {
-    state.course = value;
-  }
-
-  if (filterKind === "unit") {
-    state.unit = value;
-  }
-
-  if (filterKind === "type") {
-    state.type = value;
-  }
-
-  if (filterKind === "tag") {
-    state.query = value;
-  }
-
-  if (searchInput) {
-    searchInput.value = state.query;
-  }
-
-  renderCourseButtons();
-  populateUnitOptions();
-  renderTypeButtons();
-  renderMaterials();
+function renderPills(values, className) {
+  return values.map((value) => `<span class="${className}">${escapeHtml(value)}</span>`).join("");
 }
 
 function renderFilterButton(group, value, label, active, count) {
   const pressed = active ? "true" : "false";
   const activeClass = active ? " is-selected" : "";
-  const countText = Number.isFinite(count) ? `<span class="filter-count">${count}</span>` : "";
+  const countText = Number.isFinite(count) ? `<span>${count}</span>` : "";
   return `
     <button class="filter-button${activeClass}" type="button" data-group="${escapeHtml(group)}" data-value="${escapeHtml(value)}" aria-pressed="${pressed}">
       ${escapeHtml(label)}${countText}
@@ -364,7 +317,7 @@ function renderHomeCount(count, loaded) {
   }
 
   countElement.textContent = String(count);
-  labelElement.innerHTML = `現在 ${count} 件の資料を<span class="count-emphasis">完全無料で</span>公開中`;
+  labelElement.textContent = `現在 ${count} 件の資料を公開中`;
 }
 
 function updateCount(filteredCount, totalCount) {
@@ -462,22 +415,22 @@ function inferType(material) {
 
 function getPdfPath(file) {
   if (file.startsWith("../files/")) {
-    return file.replace("../files/", "./files/");
-  }
-
-  if (file.startsWith("./files/")) {
     return file;
   }
 
+  if (file.startsWith("./files/")) {
+    return file.replace("./files/", "../files/");
+  }
+
   if (file.startsWith("files/")) {
-    return `./${file}`;
+    return `../${file}`;
   }
 
   if (file.startsWith("/")) {
     return file;
   }
 
-  return `./files/${file}`;
+  return `../files/${file}`;
 }
 
 function formatDate(value) {
