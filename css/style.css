@@ -533,19 +533,18 @@ input:focus {
   position: relative;
   max-width: 720px;
   min-height: 420px;
-  max-height: 420px;
   overflow: hidden;
   border: 1px solid var(--faint);
   border-radius: 18px;
   background: var(--paper);
-  padding: 22px;
 }
 
 .x-fallback {
-  display: grid;
+  display: none;
   position: relative;
   z-index: 2;
-  min-height: 376px;
+  min-height: 190px;
+  padding: 22px;
   align-content: center;
   gap: 16px;
 }
@@ -563,25 +562,16 @@ input:focus {
   width: 100% !important;
 }
 
-.x-timeline-frame.is-loaded {
-  padding: 0;
-}
-
 .x-timeline-frame.is-loaded .x-fallback {
   display: none;
 }
 
 .x-timeline-frame.is-fallback {
   min-height: 190px;
-  max-height: none;
 }
 
 .x-timeline-frame.is-fallback .x-fallback {
-  min-height: 146px;
-}
-
-.x-timeline-frame.is-fallback iframe {
-  display: none !important;
+  display: grid;
 }
 
 @media (max-width: 1080px) {
