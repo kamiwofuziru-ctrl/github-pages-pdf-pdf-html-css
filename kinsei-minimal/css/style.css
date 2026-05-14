@@ -530,6 +530,7 @@ input:focus {
 }
 
 .x-timeline-frame {
+  position: relative;
   max-width: 720px;
   min-height: 420px;
   max-height: 420px;
@@ -537,11 +538,50 @@ input:focus {
   border: 1px solid var(--faint);
   border-radius: 18px;
   background: var(--paper);
+  padding: 22px;
+}
+
+.x-fallback {
+  display: grid;
+  position: relative;
+  z-index: 2;
+  min-height: 376px;
+  align-content: center;
+  gap: 16px;
+}
+
+.x-fallback p {
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--type-body);
+  font-weight: 700;
+  line-height: 1.55;
 }
 
 .x-timeline-frame iframe {
   display: block !important;
   width: 100% !important;
+}
+
+.x-timeline-frame.is-loaded {
+  padding: 0;
+}
+
+.x-timeline-frame.is-loaded .x-fallback {
+  display: none;
+}
+
+.x-timeline-frame.is-fallback {
+  min-height: 190px;
+  max-height: none;
+}
+
+.x-timeline-frame.is-fallback .x-fallback {
+  min-height: 146px;
+}
+
+.x-timeline-frame.is-fallback iframe {
+  display: none !important;
 }
 
 @media (max-width: 1080px) {

@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KINSEI E-ARCHIVE | 菫青の大学入試数学資料保管庫</title>
     <meta name="description" content="大学入試数学のPDF資料を整理して公開する資料保管庫です．">
-    <link rel="stylesheet" href="./css/style.css?v=20260514-14">
-    <script src="./js/materials.js?v=20260514-14" defer></script>
+    <link rel="stylesheet" href="./css/style.css?v=20260515-1">
+    <script src="./js/materials.js?v=20260515-1" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">本文へ移動</a>
     <header class="site-header">
-      <a class="site-name" href="./index.html?v=20260514-14" aria-label="KINSEI E-ARCHIVE ホーム">
+      <a class="site-name" href="./index.html?v=20260515-1" aria-label="KINSEI E-ARCHIVE ホーム">
         <span>KINSEI E-ARCHIVE</span>
         <small>菫青の大学入試数学資料保管庫</small>
       </a>
       <nav class="site-nav" aria-label="主要ナビゲーション">
-        <a class="is-active" href="./index.html?v=20260514-14">トップ</a>
-        <a href="./materials.html?v=20260514-14">資料一覧</a>
-        <a href="./about.html?v=20260514-14">このサイトについて</a>
-        <a href="./contact.html?v=20260514-14">連絡先</a>
+        <a class="is-active" href="./index.html?v=20260515-1">トップ</a>
+        <a href="./materials.html?v=20260515-1">資料一覧</a>
+        <a href="./about.html?v=20260515-1">このサイトについて</a>
+        <a href="./contact.html?v=20260515-1">連絡先</a>
       </nav>
     </header>
 
@@ -34,18 +34,24 @@
           <span id="homeMaterialCountLabel">資料数を読み込み中</span>
         </p>
         <p class="primary-action">
-          <a href="./materials.html?v=20260514-14">資料一覧を見る</a>
+          <a href="./materials.html?v=20260515-1">資料一覧を見る</a>
         </p>
       </section>
 
       <section class="news-section" aria-labelledby="news-title">
         <p class="section-label">お知らせ</p>
         <h2 id="news-title"><a href="https://x.com/_095y0" target="_blank" rel="noopener">Twitter（現X）</a>のフォローで応援よろしくお願いいたします</h2>
-        <div class="x-timeline-frame">
+        <div class="x-timeline-frame" data-x-frame>
+          <div class="x-fallback" data-x-fallback>
+            <p>Xの埋め込みが表示されない場合は，リンク先で最新ポストをご確認ください．</p>
+            <a class="inline-action" href="https://x.com/_095y0" target="_blank" rel="noopener">Xで最新ポストを見る</a>
+          </div>
           <a
             class="twitter-timeline"
+            data-tweet-limit="3"
             data-height="420"
             data-theme="light"
+            data-dnt="true"
             href="https://twitter.com/_095y0?ref_src=twsrc%5Etfw"
           >@_095y0 の最新ポスト</a>
         </div>
@@ -55,6 +61,28 @@
     <footer class="site-footer">
       <p>HTML / CSS / JavaScript. GitHub Pages ready.</p>
     </footer>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script>
+      function loadXTimeline() {
+        var frame = document.querySelector("[data-x-frame]");
+        if (!frame) {
+          return;
+        }
+
+        if (window.twttr && window.twttr.widgets && window.twttr.widgets.load) {
+          window.twttr.widgets.load(frame);
+        }
+
+        window.setTimeout(function () {
+          var iframe = frame.querySelector("iframe");
+          var iframeStyle = iframe ? iframe.getAttribute("style") || "" : "";
+          var isVisibleIframe = iframe && iframe.offsetHeight > 120 && iframeStyle.indexOf("visibility: hidden") === -1;
+          frame.classList.toggle("is-loaded", Boolean(isVisibleIframe));
+          frame.classList.toggle("is-fallback", !isVisibleIframe);
+        }, 4500);
+      }
+
+      window.addEventListener("load", loadXTimeline);
+    </script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" onload="loadXTimeline()"></script>
   </body>
 </html>
