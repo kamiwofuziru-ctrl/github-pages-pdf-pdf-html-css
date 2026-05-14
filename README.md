@@ -29,7 +29,7 @@ HTML、CSS、JavaScriptだけで動作し、資料一覧は `data/materials.json
 2. GitHubのリポジトリ画面で `Settings` を開きます。
 3. 左メニューの `Pages` を開きます。
 4. `Build and deployment` の `Source` を `Deploy from a branch` にします。
-5. `Branch` を `main`、フォルダを `/root` にして保存します。
+5. このリポジトリでは公開用に `gh-pages` ブランチを使います。`Branch` を `gh-pages`、フォルダを `/root` にして保存します。
 6. 数分後、GitHub PagesのURLから `index.html` が表示されます。
 
 ## ローカルで確認する手順
@@ -59,6 +59,78 @@ PDFファイル名は、英数字・小文字・ハイフンを使った名前�
 例: `linear-algebra-vectors.pdf`, `calculus-limits.pdf`
 
 リンクは相対パスで `./files/ファイル名.pdf` と書きます。
+
+## 今後の更新方法
+
+このサイトは静的サイトなので、GitHub Pages上に「自分だけが見られるアップロード画面」を安全に置くことはできません。
+管理画面でPDFを直接アップロードしてJSONを書き換えるには、認証付きのサーバー、CMS、GitHub Appなどが別途必要です。
+
+現状でおすすめの運用は次のどちらかです。
+
+### 1. Codexに追加を頼む
+
+資料を追加したいときは、次のように依頼してください。
+
+```text
+このPDFをサイトに追加して。
+PDF: /path/to/example.pdf
+タイトル: ベクトル詳解
+説明: ベクトル分野の要点と解法を整理した資料
+courses: 数学C
+units: ベクトル
+type: 基礎
+tags: ベクトル, 図形, 詳解
+更新日: 今日
+
+やってほしいこと:
+- PDFを files/ に英数字・小文字・ハイフンの名前で保存
+- data/materials.json に追加
+- JSONが正しいか確認
+- ローカルサーバーで資料一覧とPDFリンクを確認
+- 問題なければ main と gh-pages にpush
+```
+
+分類に迷う場合は、PDFだけ渡して「タイトルと内容から分類を推測して」と書けば大丈夫です。
+pushしてほしくないときは、最後に「まだcommitやpushはしないで」と書いてください。
+
+### 2. 自分で追加する
+
+1. PDFを `files/` に入れます。
+2. ファイル名を英数字・小文字・ハイフンに整えます。
+3. `data/materials.json` の配列末尾に資料情報を追加します。
+4. 次のコマンドでJSONを確認します。
+
+```bash
+python3 -m json.tool data/materials.json > /tmp/materials.json
+```
+
+5. ローカルサーバーを起動して表示を確認します。
+
+```bash
+python3 -m http.server 8000
+```
+
+6. `http://localhost:8000/materials.html` を開き、カード表示とPDFリンクを確認します。
+7. 問題なければGitHubへ反映します。
+
+```bash
+git add files/ data/materials.json
+git commit -m "Add math material"
+git push origin main
+git push origin main:gh-pages
+```
+
+### ローカル入力補助ページ
+
+この作業用PCには、公開されないローカル専用の入力補助ページを用意しています。
+
+```text
+.local-tools/material-entry-helper.html
+```
+
+ブラウザでこのHTMLを開くと、資料情報を入力して `materials.json` に追加するためのJSONを生成できます。
+このページは `.gitignore` で除外しているため、GitHub Pagesには公開されません。
+ただし、PDFを自動で `files/` にコピーしたり、JSONファイルを直接保存したりはしません。
 
 ## materials.jsonの書き方
 
